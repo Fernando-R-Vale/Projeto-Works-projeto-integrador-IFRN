@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Planejamento de tarefas{% endblock %}
+{% block styles %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/tarefa.css' %}">
+    <style>
+        p.status{
+            background-color: rgba(45, 106, 79, 0.35);
+            color: #2D6A4F;
+            max-width: 7em;
+            padding: 5px 20px;
+            border-radius: 10px;
+            font-family: "Poppins", sans-serif;
+            max-width: 6.2em;
+        }
+        p{
+            margin:  10px 0;
+        }
+        p.nome{
+            color: #132F4D;
+            font-family: "Poppins", sans-serif;
+            
+        }
+        p.descricao{
+            color: #B3B3B3;
+        }
+        p.data{
+            color: #94C11F;
+        }
+        #query{
+            width: 100em;
+        }
+        .menu-opcoes {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        .menu-opcoes ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .menu-opcoes ul li {
+            padding: 5px 10px;
+        }
+        
+        .menu-opcoes ul li a {
+            text-decoration: none;
+            color: #132F4D;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        @media screen and (max-width: 1400px) and (min-width: 801px){
+            #query{
+            width: 80em;
+        }
+        }
+        /*  Tablet*/
+
+        @media screen and (max-width: 800px) and (min-width: 481px){
+            h2{
+                font-size: 20px;
+            }
+            div.menor img.mais{
+                width: 35px;
+                height: 35px;
+            }
+            p.status{
+            width: 50px;
+            padding: 3px 12px;
+            }
+            p{
+                margin:  8px 0;
+            }
+            p.nome{
+                font-size: 15px;
+                
+            }
+            p.descricao{
+                font-size: 12px;
+            }
+            p.data{
+                color: #94C11F;
+                font-size: 12px;
+            }
+        }
+        /*Mobile*/
+        @media screen and (max-width: 400px){
+            h2{
+                font-size: 15px;
+            }
+            div.menor img.mais{
+                width: 26px;
+                height: 26px;
+                
+            }
+            p.status{
+            width: 35px;
+            padding: 3px 10px;
+            font-size: 11px;
+            border-radius: 7px;
+            }
+            p{
+                margin:  5px 0;
+            }
+            p.nome{
+                font-size: 13px;
+                
+            }
+            p.descricao{
+                font-size: 9px;
+            }
+            p.data{
+                font-size: 10px;
+            }
+            p.lider{
+                font-size: 12px;
+            }
+        }
+
+    </style>
+</head>
+{% endblock %}
+{% block content %}
+ <header>
+        <figure>
+            <a href="{% url 'home' %}"><img class="seta" src="{% static 'img/setaazul.svg' %}" alt="Menu lateral"></a>
+            <img class="logo" src="{% static 'img/simm.png' %}" alt="Logo da Simm Soluções">
+        </figure>
+        <h1>Planejamento de tarefas</h1>
+        <div class="pesquisa">
+            <form action="{}" method="GET">
+                <input type="text" id="query" name="query" placeholder="Pesquisar.." required>
+            </form>
+            <a href="{% url 'tarefa-create' %}"><button>Adicionar tarefa</button></a>
+        </div>
+    </header>
+    <main>
+        {% for tarefa in tarefas %}
+            <div class="menor">
+                <div class="tarefa">
+                    <h2 class="nome">{{tarefa.nome}}</h2>
+                    <img class="trespontos" src="{% static 'img/trespontos.png' %}" alt="Três pontos" data-id="{{tarefa.id}}">
+                </div>
+                <p class="status">{{tarefa.status}}</p>
+                <p class="lider">{{tarefa.lider_email_id}}</p>
+                <p class="descricao">{{tarefa.descricao}}</p>
+                <p class="data"><b>Atribuído em: </b>{{tarefa.dh_cadastro}}</p>
+            </div>
+        {% endfor %}
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tresPontos = document.querySelectorAll(".trespontos");
+    
+            tresPontos.forEach(icon => {
+                icon.addEventListener("click", (event) => {
+                    const colabCpf = event.target.dataset.id;  // Mude para 'cpf' e não 'id'
+                    console.log("colabCpf: ", colabCpf);  // Verifique o valor de 'cpf'
+    
+                    // Remove qualquer menu existente
+                    const existingMenu = document.querySelector(".menu-opcoes");
+                    if (existingMenu) existingMenu.remove();
+    
+                    // Cria o menu de opções
+                    const menu = document.createElement("div");
+                    menu.className = "menu-opcoes";
+                    menu.innerHTML = `
+                        <ul>
+                            <li><a href="/tarefa/visualizar%20tarefa/${colabCpf}/">Visualizar</a></li>
+                            <li><a href="/tarefa/tarefa-edit/${colabCpf}">Editar</a></li>  <!-- Passa o cpf para a URL -->
+                            <li><a href="/tarefa/tarefa-delete/${colabCpf}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></li>
+                        </ul>
+                    `;
+                    
+                    // Define a posição do menu
+                    menu.style.position = "absolute";
+                    menu.style.left = `${event.pageX}px`;
+                    menu.style.top = `${event.pageY}px`;
+    
+                    document.body.appendChild(menu);
+    
+                    // Fecha o menu ao clicar fora
+                    document.addEventListener("click", (e) => {
+                        if (!menu.contains(e.target) && e.target !== icon) {
+                            menu.remove();
+                        }
+                    }, { once: true });
+                });
+            });
+        });
+    </script>
+    <footer>
+        <p>Criado e desenvolvido pela equipe X, todos os direitos autorais são <br> destinados a SIMM Soluções.</p>
+    </footer>
+
+{% endblock %}
+   
+
+
+
+
+
+
+
+   
+
+

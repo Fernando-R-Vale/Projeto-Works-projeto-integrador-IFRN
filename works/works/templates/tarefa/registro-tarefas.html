@@ -1,0 +1,355 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Registro de Tarefas Lider{% endblock %}
+{% block styles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Tarefa</title>
+    <link rel="stylesheet" href="{% static 'css/global_novos_arquivos' %}">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }    
+        header {
+            display: list-item;
+            background-image: url("{% static 'img/header.png'%}");
+            height: 50em;
+            width: 100%;
+            background-size: cover;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+        .registrar_tarefa {
+            font-family: Alatsi;
+            display: flex;
+            align-items: center;
+            gap: 2em;
+            margin-bottom: 2em;
+        }
+        .registrar_tarefa img{
+            width: 2em;
+        }
+        .registrar_tarefa h1 {
+            color: white;
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .registrar_tarefa label {
+            font-family: Inter;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form_status label {
+         
+            display: flex;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 2em;
+        }
+
+        .form_status input[type="text"],
+        .form_status select
+        {
+            margin-left: 15em;
+            margin-top: 3em;
+            width: 50%;
+            padding: 15px;
+            border: 2px solid #c4ecaa;
+            border-radius: 10px;
+            font-size: 20px;
+            color: #5f5f5f;
+            resize: none;
+            margin-bottom: 50em;
+        }
+        .descricao textarea {
+            margin-top: 3em;
+            width: 40%;
+            height: 20em;
+            padding: 15px;
+            border: 2px solid #c4ecaa;
+            border-radius: 20px;
+            font-size: 20px;
+            color: #5f5f5f;
+            resize: none;
+        }
+        .descricao label {
+            font-family: Inter;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #122f4e;;
+            margin-top: 3em;
+        }
+        .descricao{
+            text-align: center;
+        }
+        .datas_texto {
+            display: flex;
+            padding-top: 8em;
+            margin-left: 6em;
+        }
+
+        .datas_texto label {
+            margin-left: 3em;
+            font-family: Inter;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .datas_texto span {
+            font-family: Inter;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+
+        .datas_texto input {
+            width: 100%;
+            max-width: 31em; 
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #a8d34a;
+            color: #ffffffe5;
+            font-size: 20px;
+            padding: 5px 0;
+            outline: none;
+            margin-top: 30px;
+        }
+        .datas_texto img{
+            max-width: 12em;
+            padding-top: 25px;
+            padding-left: 17px;
+        }
+        #data-inicio {
+                margin-bottom: 1em; 
+        }
+        p.footer{
+            text-align: center;
+            margin-top: 2em;
+            font-family: "Inter", sans-serif;
+            color: #989898;
+        }
+
+        footer{  
+            margin: 8em 0 8em 0;
+            text-align: center;
+        }
+        .container-botao {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            width: 100%; 
+            margin-top: 2em;
+        }
+        button {
+            background-color: #94C11F;
+            border-radius: 10px;
+            color: white;
+            border: none;
+            width: 12em;
+            height: 50px;
+            text-align: center;
+            font-family: Alatsi;
+        }
+        .form_status {
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            outline: none;
+        }
+        p.footer{
+            text-align: center;
+            margin-bottom: 2em;     
+            color: #989898;
+        }
+
+        footer{  
+            margin: 8em 0 8em 0;
+            text-align: center;
+            font-family: Inter;
+            padding-bottom: 2em;
+        }
+
+
+        @media (max-width: 1200px) {
+            .datas_texto label {
+                margin-left: 0;
+                font-family: Inter;
+                font-size: 25px;
+                font-weight: bold;
+            }
+            .datas_texto img{
+                max-width: 140%;
+                margin-right: 4em;
+                padding-top: 35px;
+            }
+            .datas_texto{
+                margin-left: 0;
+            }
+            .infos_colab{
+                margin-left: 1em;
+            }
+            .datas_texto span {
+                font-family: Inter;
+                font-size: 1em;
+                margin-right: 10px;
+            }
+            .form_status input[type="text"],
+            .form_status select
+            {
+                margin-left: 7em;
+                margin-top: 3em;
+                width: 70%;
+            }
+            .descricao textarea {
+                margin-top: 3em;
+                width: 60%;
+                height: 20em;
+            }
+            button{
+                margin-left: 22em;
+            }
+            main {
+                background-color: white; 
+                border-radius: 60px 60px 0 0; 
+                margin-top: -100px; 
+                padding-top: 2em;
+            }
+
+            .datas_texto input {
+                max-width: 45em;
+                background: transparent;
+                border-bottom: 1px solid #a8d34a;
+                font-size: 20px;
+                padding: 5px 0;
+                outline: none;
+                margin-top: 30px;
+            }
+            
+        }
+
+        @media (max-width: 768px) {
+            .datas_texto img{
+                width: 80%;
+                padding-top: 35px;
+            }       
+            .datas_texto {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0 auto;
+                padding: 1em 0;
+                gap: 2em;
+            }
+           
+            .datas_texto input {
+                margin-top: 1em;
+            }
+            .dates label{
+                font-size: 20px;
+                margin-left: 0;
+            }
+            #data-inicio {
+                margin-bottom: 1em; 
+            }
+            .form_status input[type="text"],
+            .form_status select
+            {
+                margin-left: 0;
+                margin-top: 2em;
+                width: 100%;
+            }
+            .descricao textarea {
+                margin-top: 3em;
+                width: 80%;
+            }
+
+            main {
+                background-color: white; 
+                border-radius: 60px 60px 0 0; 
+                margin-top: -50px; 
+                padding-top: 2em; 
+                box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+            }
+            footer p{
+                font-size: 15px;
+            }
+            .lider{
+                margin: 2em;
+                margin-left: 7em;
+            }
+            button{
+                margin-left: 13em;
+                margin-bottom: 3em;
+            }
+        }
+ 
+
+    </style>
+{% endblock %}
+{% block content %}
+
+<body>
+    <header>
+        <div class="registrar_tarefa">
+            <a href="{% url 'home-lider' %}"><img src="{% static 'img/seta.svg' %}" alt="seta" width="20"></a>
+            <h1>Registrar Tarefa</h1>
+        </div>
+
+        <!-- Formulário de Registro de Tarefa -->
+        <form method="POST" action="{% url 'registro-tarefas' id=tarefa.id %}">
+            {% csrf_token %}
+
+            <div class="datas_texto">
+                <div>
+                    <img src="{% static 'img/calendario_edicao_tarefa.svg' %}" alt="">
+                </div>
+                <div class="dates"> 
+                    <label for="data-inicio">
+                        <span>Data de início:</span>
+                        <input type="datetime-local" id="data-inicio" name="data_inicio" placeholder="dd/mm/aaaa - 00h:00m">
+                    </label>
+                    
+                    <label for="data-fim">
+                        <span>Data de término:</span>
+                        <input type="datetime-local" id="data-fim" name="data_fim" placeholder="dd/mm/aaaa - 00h:00m">
+                    </label>
+                </div>
+            </div>
+
+            <div class="form_status">
+                <select id="status" name="status">
+                    <option value="" disabled selected>Status</option>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Pendente">Pendente</option>
+                </select>
+            </div>
+        </header>
+        
+        <main>
+            <div class="descricao">
+                <label for="description">Ocorrências.</label>
+                <textarea id="description" name="ocorrencia" placeholder="Ocorrências"></textarea>
+            </div>
+            <div class="container-botao">
+                <button>Registrar tarefa</button>
+            </div>
+            
+        </form>
+    </main>
+
+    <footer>
+        <p>Criado e desenvolvido pela equipe X, todos os direitos autorais são destinados a SIMM Soluções.</p>
+    </footer>
+</body>
+
+{% endblock %}

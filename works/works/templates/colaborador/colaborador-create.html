@@ -1,0 +1,412 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Gerenciar Colaboradores{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        header {
+            display: list-item;
+            background-image: url("{% static 'img/header.png'%}");
+            height: 53em;
+            width: 100%;
+            background-size: cover;
+            box-sizing: border-box;
+        }
+        .gerenc_colab {
+            font-family: Alatsi;
+            display: flex;
+            align-items: center;
+            gap: 2em;
+            margin-bottom: 2em;
+        }
+        .gerenc_colab img {
+            width: 50%;
+            padding-top: 3em;
+            padding-left: 2em;
+        }
+        .gerenc_colab h1 {
+            color: white;
+            font-size: 40px;
+            margin: 0;
+            padding-top: 1em;
+        }
+        .infos_colab input {
+            width: 100%;
+            max-width: 30em; 
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #a8d34a;
+            color: rgb(253, 252, 252);
+            font-size: 20px;
+            padding: 5px 0;
+            outline: none;
+            margin-top: 30px;
+        }
+        .infos_colab img{
+            width: 15em;
+            padding-top: 25px;
+        }
+        .foto{
+            display: flex;
+            flex-direction: column;
+            margin-right: 6em;
+        }
+        .foto p{
+            margin-left: 33em;
+            padding-top: 2em;
+        }
+        .infos{
+            margin-right: 18em;
+            flex-direction: column;
+            display: flex;
+            gap: 2em;
+        }
+        .dt_nascimento label{
+            color: white;
+            font-size: 20px;
+        }
+        .dt_nascimento input{
+            width: 100%;
+            max-width: 12em; 
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #a8d34a;
+            color: white;
+            font-size: 20px;
+            padding: 5px 0;
+            outline: none;
+        }
+        .dt_nascimento img{
+            max-width: 50px;
+        }
+        .dt_nascimento{
+            gap: 2em;
+            display: flex;
+            margin-top: 4em;
+        }
+        .profissao label{
+            color: white;
+            font-size: 20px;
+        }
+        .profissao input{
+            width: 100%;
+            max-width: 12em; 
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #a8d34a;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 5px 0;
+            outline: none;
+        }
+        .profissao{
+            margin-left: 10em;
+            gap: 2em;
+            display: flex;
+            margin-top: 4em;
+        }
+        .discorrer textarea {
+            margin-top: 3em;
+            width: 40%;
+            height: 15em;
+            padding: 15px;
+            border: 2px solid #c4ecaa;
+            border-radius: 20px;
+            font-size: 20px;
+            color: #5f5f5f;
+            resize: none;
+        }
+        .discorrer label {
+            font-family: Inter;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #122f4e;;
+            margin-top: 3em;
+        }
+        .discorrer{
+            text-align: center;
+        }
+        button{
+            text-align: center;
+            margin-left: 52em;
+            margin-bottom: 3em;
+            width: 15em;
+            cursor: pointer;
+        }
+        .infos_colab {
+            display: flex;
+            padding-top: 5em;
+            margin-left: 6em;
+        }
+
+        .infos_colab label {
+            margin-left: 4em;
+            color: white;
+            font-family: Inter;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .infos_colab span {
+            color: white;
+            font-family: Inter;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+        .lider label{
+            color: white;
+            font-size: 20px;
+            font-family: Inter;
+            padding: 15px;
+        }
+        .lider{
+            margin: 2em;
+            margin-left: 34em;
+        }
+        .discorrer textarea {
+            margin-top: 3em;
+            width: 70%;
+            height: 15em;
+        }
+        .footer{
+            margin: 8em;
+            text-align: center;
+            font-family: "Inter", sans-serif;
+            color: #989898
+           
+        }
+
+        @media (max-width: 1024px) {
+            .infos_colab label {
+                margin-left: 0;
+                font-family: Inter;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            
+            .infos_colab{
+                margin-left: 1em;
+            }
+            .infos_colab span {
+                font-family: Inter;
+                font-size: 1em;
+                margin-right: 10px;
+            }
+            main button{
+                text-align: center;
+                margin-left: 22em;
+            }
+            .infos_colab input {
+                width: 100%;
+                width: 20em;
+                background: transparent;
+                border-bottom: 1px solid #a8d34a;
+                font-size: 20px;
+                padding: 5px 0;
+                outline: none;
+                margin-top: 30px;
+            }
+            .dt_nascimento{
+                margin-left: 1em;
+                gap: 2em;
+                display: flex;
+                margin-top: 2em;
+            }
+            .profissao textarea {
+                margin-top: 3em;
+                width: 60%;
+                height: 2em;
+            }
+            .lider{
+                margin: 2em;
+                margin-left: 10em;
+            }
+            main button{
+                margin-left: 18em;
+            }
+            .foto {
+                order: -1;
+                margin-bottom: 1em;
+                text-align: center;
+                padding-bottom: 3em;
+            }
+            .foto img {
+                width: 70%;
+                
+            }
+            .foto p {
+                font-size: 15px;
+                margin: 0;
+                padding-top: 0.5em;
+                text-align: center;
+                margin-right: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            
+            .gerenc_colab h1{
+                font-size: 30px;
+            }
+            .infos_colab {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 1em 0;
+            }
+            .foto {
+                order: -1;
+                margin-bottom: 1em;
+                text-align: center;
+                padding-bottom: 3em;
+                margin-right: 30em;
+            }
+            .foto img {
+                width: 40%;
+                
+            }
+            .foto p {
+                font-size: 15px;
+                margin: 0;
+                padding-top: 0.5em;
+                text-align: center;
+                margin-right: 10px;
+            }
+            .infos {
+                margin-left: 5em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .infos_colab input {
+                max-width: 90%;
+                margin-top: 1em;
+            }
+            button{
+                text-align: center;
+                margin-left: 11em;
+            }
+            footer p{
+                margin: 8em;
+                text-align: center;
+            }
+            .lider{
+                margin: 2em;
+                margin-left: 7em;
+            }
+            button{
+                margin-left: 10em;
+            }
+            .dt_nascimento{
+                margin-left: 6em;
+            }
+            .infos_colab img{
+                width: 30%;
+                padding-top: 25px;
+                padding-left: 6em;
+            }
+        
+        }
+ 
+    </style>
+{% endblock %}
+{% block content %}
+<body>
+    <header>
+        <div class="gerenc_colab">
+            <a href="colaborador-manage">
+                <img src="{% static 'img/seta.png' %}" alt="seta" width="20">
+            </a>
+            <h1>Adicionar novo colaborador</h1>
+        </div>
+        <main>
+            <form method="POST" enctype="multipart/form-data" action="/colaborador/colaborador-create">
+                {% csrf_token %}
+                <div class="infos_colab">
+                    <div class="infos"> 
+                        <div class="infos">
+                            <label for="nome">
+                                <span>Nome do colaborador:</span>
+                                <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                            </label>
+                            
+                            <label for="cpf">
+                                <span>CPF:</span>
+                                <input type="text" id="cpf" name="cpf" placeholder="CPF" required>
+                            </label>
+                            <label for="profissao">
+                                <span>Profissão:</span>
+                                <input type="text" id="profissao" name="profissao" placeholder="Profissão"  required>
+                            </label>
+                            <div class="dt_nascimento">
+                                <label for="dt_nascimento">
+                                        <span>Data de Nascimento:</span>
+                                    <input type="date" id="dt_nascimento" name="dt_nascimento" required>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="foto">
+                        <label for="foto">Foto do colaborador</label>
+                        <figure><img src="{% static 'img/perfil.png' %}" alt="Perfil" style="cursor: pointer;" id="imagem-dado"></figure>
+                        <input type="file" id="foto" name="foto" style="display: none;" accept="image/*" required>
+                    </div>
+                    
+                    
+                </div>
+                
+                
+                
+                
+    </header>
+
+                
+                
+                <button type="submit">Adicionar colaborador</button>
+            </form>                   
+        </main>
+        <footer>
+        <p class="footer">Criado e desenvolvido pela equipe X, todos os direitos autorais são <br> destinados a SIMM Soluções.</p>
+    </footer>
+</body>
+{% endblock %}
+{% block scripts %}
+<script>
+    const imagem_dado = document.querySelector('#imagem-dado')
+    const upload_imagem = document.querySelector('#foto')
+
+    imagem_dado.addEventListener('click', () => {
+        upload_imagem.click()
+    })
+
+    upload_imagem.addEventListener('change', (Event) => {
+        if (Event.target.files && Event.target.files[0]) {
+            const nova_imagem = URL.createObjectURL(Event.target.files[0])
+    
+            const imgTemp = new Image()
+            imgTemp.src = nova_imagem
+    
+            imgTemp.onload = () => {
+                const largura_atual = imagem_dado.width
+                const altura_atual = imagem_dado.height
+    
+                imagem_dado.src = nova_imagem
+                imagem_dado.width = largura_atual
+                imagem_dado.height = altura_atual
+            }
+        }
+    })
+</script>
+{% endblock %}

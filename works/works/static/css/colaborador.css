@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: "Inter", sans-serif;
+    margin: 30px
+}
+header{
+    margin-bottom: 6em;
+    
+}
+figure img.menu{
+    width: 100%;
+    max-width: 30px;
+    max-height: 30px;
+}
+figure{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5.7em;
+}
+figure img.logo{
+    width: 100%;
+    max-width: 120px;
+}
+h1{
+    font-size: 3em;
+    color: #132F4D;
+    margin: 2.5em 50px 2.7em 1.65em;
+}
+div.pesquisa{
+    display: flex;
+    justify-content: space-evenly;
+}
+div.pesquisa input{
+    border: solid #94C11F 2px;
+    border-radius: 15px;
+    width: 146em;
+    height: 50px;
+    padding-left: 10px;
+}
+div.pesquisa button{
+    background-color: #94C11F;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    width: 13em;
+    cursor: pointer;
+    margin-top: 0;
+    height: 54px;
+    font-size: 15px;
+}
+div.pesquisa button:hover{
+    background-color: #132F4D;
+    transition: ease 0.5s;
+}
+main{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+main div.menor{
+    border: solid #B3B3B3 1px;
+    border-radius: 8px ;
+    max-width: 30em;
+    gap: 1em;
+    padding: 1.5em;
+    margin: 2em 2em;
+}
+main div.tarefa{
+    display: flex;
+    justify-content: space-between;
+
+}
+footer{
+    color: #989898;
+    margin: 8em;
+    text-align: center;
+}
+h2{
+    color: #132F4D;
+    font-family: "Poppins", sans-serif;
+}
+
+@media screen and (max-width: 1400px) and (min-width: 801px){
+    div.pesquisa input{
+        width: 62em;
+
+    }
+}
+/* Tablet*/
+@media screen and (max-width: 800px) and (min-width: 481px){
+    figure img.menu{
+        width: 100%;
+        max-width: 25px;
+        max-height: 25px;
+    }
+    figure{
+        margin: 0 2.7em;
+    }
+    figure img.logo{
+        width: 100%;
+        max-width: 90px;
+    }
+    h1{
+        font-size: 2em;
+    }
+    div.pesquisa input{
+        border: solid #94C11F 2px;
+        border-radius: 15px;
+        width: 35em;
+        height: 40px;
+        padding-left: 10px;
+    }
+    div.pesquisa button{
+        width: 122px;
+    }
+    main div.menor{
+        border-radius: 8px ;
+        width: 15em;
+        gap: 1em;
+        padding: 1em;
+        margin: 1em;
+    }
+    footer{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    figure img.menu{
+        width: 100%;
+        max-width: 20px;
+        max-height: 20px;
+    }
+    figure{
+        margin: 0 0.7em;
+    }
+    figure img.logo{
+        max-width: 56px;
+    }
+    h1{
+        font-size: 1.5em;
+        margin-left: 10px;
+    }
+    div.pesquisa input{
+        border-radius: 10px;
+        width: 18em;
+        height: 30px;
+        padding-left: 10px;
+    }
+    div.pesquisa button{
+        width: 122px;
+        font-size: 5px;
+        height: 20px;
+    }
+    main div.menor{
+        border-radius: 23px;
+        width: 20em;
+        margin: 0.5em;
+        padding: 1em;
+    }
+    footer{
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Visualizar Tarefa{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/global_novos_arquivos.css' %}">
+    <style>
+        .content-wrapper {
+            background: white;
+            border-radius: 60px 60px 0 0;
+            margin: -50px 2em 0;
+            padding: 3em 2em;
+        }
+        
+        .info-section {
+            margin: 2em 0;
+            padding: 1em;
+            border-bottom: 2px solid #c4ecaa;
+        }
+        
+        .info-label {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        header{
+            display: none;
+        }
+        
+        .info-value {
+            font-family: 'Inter', sans-serif;
+            color: #5f5f5f;
+            font-size: 1.1em;
+            margin-left: 1em;
+            line-height: 1.6;
+        }
+        
+        .dates-container {
+            display: flex;
+            gap: 2em;
+            margin-top: 1em;
+        }
+        
+        .status-indicator {
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            display: inline-block;
+            font-family: 'Inter';
+        }
+        .welcome a{
+            gap: 6em;
+            margin-top: 2em;
+            margin-right: 12em;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .status-pendente { background: #ffeeba; color: #856404; }
+        .status-em_andamento { background: #cce5ff; color: #004085; }
+        .status-concluido { background: #d4edda; color: #155724; }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin: -30px 1em 0;
+                padding: 2em 1em;
+            }
+            
+            .dates-container {
+                flex-direction: column;
+                gap: 1em;
+            }
+            
+            .info-label {
+                font-size: 1.2em;
+            }
+            
+            .info-value {
+                font-size: 1em;
+            }
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<body>
+    <header>
+       
+            <div class="welcome">
+                <a href="{% if user_type == 'lider' %}{% url 'home-lider' %}{% else %}{% url 'tarefa-details' %}{% endif %}">
+                    <img src="{% static 'img/seta_azul.png' %}" alt="Voltar" class="logo">
+
+                </a>
+            </div>
+        
+    </header>
+
+    <div class="content-wrapper">
+        <div class="info-section">
+            <div class="info-label">Titulo:</div>
+            <div class="info-value">{{tarefa.nome}}</div>
+        </div>
+        <div class="info-section">
+            <div class="info-label">Descrição:</div>
+            <div class="info-value">{{ tarefa.descricao|default:"Nenhuma descrição informada" }}</div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-label">Status:</div>
+            {% if tarefa.status == "Pendente" %}
+                <div class="status-indicator status-{{ tarefa.status|slugify }}">
+                    Pendente
+                </div>
+            {% endif %}
+            {% if tarefa.status == "Em andamento"%}
+                <div class="status-indicator status-{{ tarefa.status|slugify }}">
+                    Em andamento
+                </div>
+            {% endif %}
+            {% if tarefa.status == "Concluído" %}
+                <div class="status-indicator status-{{ tarefa.status|slugify }}">
+                    Concluído
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="info-section">
+            <div class="info-label">Período</div>
+            <div class="dates-container">
+                <div>
+                    <div class="info-label">Início</div>
+                    <div class="info-value">{{ tarefa.dh_inicio|date:"d/m/Y H:i" }}</div>
+                </div>
+                <div>
+                    <div class="info-label">Término</div>
+                    <div class="info-value">{{ tarefa.dh_termino|date:"d/m/Y H:i" }}</div>
+                </div>
+            </div>
+        </div>
+
+        {% if tarefa.ocorrencia %}
+        <div class="info-section">
+            <div class="info-label">Ocorrências</div>
+            <div class="info-value">{{ tarefa.ocorrencia }}</div>
+        </div>
+        {% endif %}
+        <div class="info-section">
+            <div class="info-label">Colaboradores</div>
+            {% if colaboradores %}
+                <div class="colaboradores-list">
+                    {% for colaborador in colaboradores %}
+                    <div class="colaborador-item">
+                        <div class="colaborador-nome">{{ colaborador.nome }}</div>
+                        <div class="colaborador-info">
+                            <div>Profissão: {{ colaborador.profissao }}</div>
+                            {% if colaborador.descricao %}
+                            <div class="descricao">{{ colaborador.descricao }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="info-value">Nenhum colaborador atribuído</div>
+            {% endif %}
+        </div>
+
+        <div class="info-section">
+            <div class="info-label">Responsáveis</div>
+            <div class="info-value">
+                <p>Líder: {{ tarefa.lider_email.nome }}</p>
+                <p>Planejador: {{ tarefa.planejador_email.nome }}</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Criado e desenvolvido pela equipe X, todos os direitos autorais são <br> destinados a SIMM Soluções.</p>
+    </footer>
+</body>
+{% endblock %}

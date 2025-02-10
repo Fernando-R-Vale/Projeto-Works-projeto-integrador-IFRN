@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Nova Senha{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/senha.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <button class="icon" onclick="voltar()"><p class="seta">&larr;</p>Voltar</button>
+    <h2>Crie sua nova senha abaixo:</h2>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    <form method="POST" action="{% url 'nova_senha' %}">
+        {% csrf_token %}
+        <label for="newPassword">Nova senha</label>
+        <input type="password" name="newPassword" required>
+        <label for="confirmPassword">Confirme sua senha</label>
+        <input type="password" name="confirmPassword" required>
+        <button type="submit">Continuar</button>
+    </form>
+</div>
+{% endblock %}

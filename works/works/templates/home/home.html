@@ -1,0 +1,495 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Tela Inicial{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        header .sair {
+            padding-left: 7.5em;
+            max-width: 30px;
+            max-height: 50px;
+        }
+
+        header .logo {
+            max-width: 120px;
+            padding-right: 3em;
+        }
+        .imagens{
+            gap: 6em;
+            margin-top: 2em;
+            margin-right: 12em;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .boasvindas {
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start; 
+            gap: 30rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+        }
+
+        .boasvindas-text {
+            color: #333;
+            font-family: Alatsi;
+        }
+        .boasvindas-text h1{
+            color: #333;
+
+        }
+        h1 span {
+            color: var(--primary-color);
+        }
+
+        .boasvindas p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-family: Inter;
+
+        }
+
+        .welcome{
+            max-width: 30em;
+            width: 100%;
+            display: flex;
+            padding-bottom: 1em;
+        }
+
+
+        /*opções de card*/
+
+        .div-maior{
+            display: flex;
+            margin-top: 3em;
+            background-color: var(--primary-color);
+            padding: 6em;
+            border-radius: 0 50px 50px 0;
+            max-width: 80em;
+            gap: 1em;
+            justify-content: center;
+
+        }
+        .cards {
+            display: flex;
+            gap: 15px;
+        }
+
+        .cards div {
+            background-color: #fff;
+            width: 220px; 
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Poppins;
+        }
+
+        .cards div:hover {
+            transform: scale(1.05);
+        }
+
+        .cards img:first-child {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cards h2 {
+            font-size: 25px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.2; 
+        }
+
+        .cards p {
+            font-family: Inter;
+            font-size: 15px;
+            color: var(--primary-color);
+            line-height: 1.5; 
+            margin-bottom: 15px;
+        }
+
+        .cards img:last-child {
+            bottom: 15px;
+            right: 15px;
+            width: 16px;
+            height: 16px;
+            color: #4caf50;
+        }
+
+        button{
+            background-color: var(--secondary-color);
+            color: var(--text-white);
+            border: none;
+            width: 10em;
+            border-radius: 10px;
+            padding: 1em;
+            margin-top: 2em;
+            font-size: 1em;
+        }
+        .cards-maiores{
+            display: flex;
+            margin: 5em;
+            justify-content: space-around;
+        }
+        .bigcards{
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 2em;
+            width: 25em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .calendario{
+            width: 90%;
+            padding-left: 1.5em;
+            margin-top: 1em;
+        }
+        .graphic{
+            width: 70%;
+            padding-left: 4em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        .cm{
+            display: flex;
+            justify-content: space-between;
+        }
+        .porc{
+            font-size: 30px;
+        }
+        .visitar-site{
+            background-color: var(--primary-color);
+            padding: 6em;
+            display: flex;
+            align-items: start;
+            margin-top: 15em;
+        }
+        .visitar-site p{
+            color: #ffffff;
+            margin-top: 3em;
+            padding-right: 4em;
+            margin-left: 4em;
+            font-size: 25px;
+
+        }
+        .logobranca{
+            margin-left: 5em;
+            width: 20%;
+        }
+        .sitevisit{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+        .sitevisit a{
+            background-color: var(--secondary-color);
+            color: var(--text-white);
+            border: none;
+            width: 10em;
+            border-radius: 30px;
+            padding: 1em;
+            margin-top: 2em;
+            font-size: 1em;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 6em;
+            font-family: Inter;
+            text-align: center;
+        }
+        .visit{
+            padding-top: 3em;
+        }
+        .cards a {
+            text-decoration: none; /* Remove sublinhados no texto */
+            display: block; /* Faz com que o link ocupe toda a área do card */
+        }
+
+        .cards a div {
+            cursor: pointer;
+        }
+        p.footer{
+            text-align: center;
+            margin-top: 2em;
+            font-family: "Inter", sans-serif;
+            color: #989898;
+        }
+
+        footer{
+            
+            margin: 8em 0 8em 0;
+            text-align: center;
+         }
+
+ /*tablet */
+    @media (max-width: 1024px) {
+        .welcome {
+            width: 50%;
+            margin-left: 2em;
+        }
+        .boasvindas {
+            gap: 2rem;
+            margin-left: 2rem;
+        }
+        .div-maior {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            flex-wrap: wrap; 
+            padding: 2em;
+            gap: 2em;
+            border-radius: 0;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 1em;
+            justify-content: center; 
+        }
+        .cards div {
+            width: 210px; 
+            padding: 15px;
+        }
+        .cards-maiores {
+            flex-direction: column;
+            gap: 5em;
+            align-items: center;
+            margin: 2em 0;
+        }
+
+        .bigcards {
+            width: 60%;
+        }
+
+        .visitar-site {
+            align-items: center;
+            padding: 2em;
+        }
+
+        .sitevisit p {
+            font-size: 16px;
+            padding-right: 0;
+            text-align: left; 
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+        }
+        .visit {
+            width: 50%;
+        }
+        .logobranca {
+            width: 40%;
+        }
+        header .sair {
+            padding-left: 0;
+        }
+    }
+
+    /*mobile */
+    @media (max-width: 768px) {
+        .boasvindas {
+            margin-left: 0;
+            width: 100%;
+            flex-direction: column;
+            box-shadow: 0 6px 9px rgba(0, 0, 0, 0.1); 
+        }
+        .welcome {
+            content: url("{% static 'img/imgdois.svg' %}"); 
+            width: 80%;
+            margin: auto 0;
+        }
+        .div-maior {
+            padding: 1em;
+            border-radius: 0;
+        }
+        .cards{
+            flex-direction: column;
+        }
+
+        .cards div {
+            width: 29em; 
+            height: 14em;
+            border-radius: 3em;
+        }
+
+        .bigcards {
+            width: 90%;
+        }
+
+        .visitar-site {
+            padding: 1em;
+        }
+
+        .sitevisit a {
+            margin-left: 0;
+            margin-top: 1em;
+        }
+            
+        .cards img:first-child {
+            width: 45px;
+            height: 38px;
+            margin-left: 24em;
+        }
+        .cards img:last-child {
+            margin-left: 24em;
+            width: 35px;
+            height: 40px;
+            color: #4caf50;
+            margin-bottom: 40em;
+        }
+        .cards h2{
+            font-size: 30px;
+            margin-left: 1em;
+        }
+        .cards p{
+            margin-bottom: 0;
+            margin-left: 2em;
+            font-size: 15px;
+        }
+        .boasvindas-text{
+            margin-right: 10em;
+            padding-right: 4em;
+        }
+        .bigcards{
+            width: 60%;
+        }
+        .cards-maiores {
+
+            flex-direction: column;
+            gap: 2em;
+            align-items: center;
+            margin: 2em 0;
+        }
+
+        .porc{
+            font-size: 25px;
+        }
+        .line{
+            display: none;
+        }
+        .visitar-site{
+            display: flex;
+            flex-direction: column;
+        }
+        .logo{
+            width: 35%;
+            margin-left: 0;
+        }
+        .sair{
+            width: 85%;
+        }
+        .imagens{
+            display: flex;
+            justify-content: space-between;
+            padding-left: 2em;
+        }
+        hr{
+            width: 100%;
+        }
+        .sitevisit p{
+            margin-left: 0;
+        }
+        .sitevisit a{
+            margin-bottom: 3em;
+            margin-left: 20em;
+        }
+        
+    }
+
+    </style>
+{% endblock %}
+{% block header %}
+    <div class="imagens">
+        <a href="{% url 'logout' %}"><img src="{% static 'img/sair.svg' %}" alt="Sair" class="sair"></a>
+        <img src="{% static 'img/logo.svg' %}" alt="Logo Simm" class="logo">
+    </div>
+{% endblock %}
+{% block content %}
+    <main>
+        <section class="boasvindas">
+            <div class="boasvindas-text">
+                <h1>Olá, <br> <span>Marcílio!</span></h1>
+                <p>Escolha por onde começar.</p>
+            </div>
+            <img src="{% static 'img/welcome.svg' %}" alt="Bem-vindo" class="welcome">
+        </section>
+        <div class="div-maior">
+            <div class="cards">
+                <a href="{% url 'tarefa-create' %}">
+                    <div> 
+                        <img src="{% static 'img/create-icon.svg' %}" alt="" class="icon">
+                        <h2>Crie <br> tarefas</h2>
+                        <p>Planeje e atribua tarefas a seus funcionários.</p>
+                        <img src="{% static 'img/seta-fina.svg' %}" alt="">
+                    </div>
+                </a>
+                <a href="{% url 'tarefa-details' %}">
+                    <div> 
+                        <img src="{% static 'img/managetasks-icon.svg' %}" alt="">
+                        <h2>Gerenciar <br>tarefas</h2>
+                        <p>Gerencie as tarefas <br> criadas.</p>
+                        <img src="{% static 'img/seta-fina.svg' %}" alt="">
+                    </div>
+                </a>
+                <a href="{% url 'lider-manage' %}">
+                    <div> 
+                        <img src="{% static 'img/addcolab-icon.svg' %}" alt="">
+                        <h2>Gerenciar <br>líderes</h2>
+                        <p>Gerencie seus <br>líderes.</p>
+                        <img src="{% static 'img/seta-fina.svg' %}" alt="">
+                    </div>
+                </a>
+                <a href="{% url 'colaborador-manage' %}">
+                    <div> 
+                        <img src="{% static 'img/managecolab-icon.svg' %}" alt="">
+                        <h2>Gerenciar <br>colaboradores</h2>
+                        <p>Gerencie seus <br>colaboradores.</p>
+                        <img src="{% static 'img/seta-fina.svg' %}" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <section class="cards-maiores">
+            <div class="bigcards">
+                <h2>Desempenho semanal de tarefas.</h2>
+                <img class="graphic" src="{% static 'img/graphic.svg' %}" alt="">
+                <div class="cm">
+                    <p class="porc">98,9% <br> concluidas.</p>
+                    <button>Ver mais ></button>
+                </div>
+            </div>
+            <div class="bigcards">
+                <h2>Calendário.</h2>
+                <p>Fevereiro</p>
+                <img class="calendario" src="{% static 'img/calendario.svg' %}" alt="">
+            </div>
+        </section>
+        
+        <div class="visitar-site">
+            <img class="visit" src="{% static 'img/visitsite.svg' %}" alt="">
+            <img src="{% static 'img/line.png' %}" alt="line" class="line">
+            <hr>
+            <div class="sitevisit">
+                <img class="logobranca"  src="{% static 'img/logobranca.svg' %}" alt="">
+                <p>Com atendimento diferenciado e focado sempre nas necessidades dos clientes, a SIMM oferece serviços que conciliam desempenho, qualidade, cumprimento de prazos e a melhor relação custo-benefício.</p>
+                <a href="https://simmsolucoes.com.br" target="_blank">Visitar site -></a>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    <p class="footer">Criado e desenvolvido pela equipe X, todos os direitos autorais são <br> destinados a SIMM Soluções.</p>
+{% endblock %}

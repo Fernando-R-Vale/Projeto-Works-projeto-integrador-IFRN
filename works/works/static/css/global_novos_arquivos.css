@@ -1,0 +1,233 @@
+/* Configurações Gerais */
+@font-face {
+    font-family: 'alatsi';
+    src: url(fonts/Alatsi-Regular.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'alatsi';
+}
+:root{
+    --primary-color: #122f4e;
+    --secondary-color: #94c11f;
+    --text-white: white;
+    --text-black: black;
+}
+h1{
+    font-size: 2em;
+    color: var(--primary-color);
+}
+h3{
+    font-size: 1em;
+    color: var(--primary-color);
+}
+p{
+    font-size: 1em;
+    color: var(--primary-color);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    border-bottom: 1px solid #e0e0e0;
+    
+}
+
+
+header .sair {
+    padding-left: 7.5em;
+    max-width: 30px;
+    max-height: 50px;
+}
+
+header .logo {
+    max-width: 120px;
+    padding-right: 3em;
+}
+
+.boasvindas {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    gap: 30rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin-left: 10rem;
+}
+
+.boasvindas-text {
+    color: #333;
+    font-family: Alatsi;
+}
+.boasvindas-text h1{
+    color: #333;
+
+}
+h1 span {
+    color: var(--primary-color);
+}
+
+.boasvindas p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    font-family: Inter;
+
+}
+
+/*opções de card*/
+
+.div-maior{
+    display: flex;
+    margin-top: 3em;
+    background-color: var(--primary-color);
+    padding: 6em;
+    border-radius: 0 50px 50px 0;
+    max-width: 80em;
+    gap: 1em;
+    justify-content: center;
+
+}
+.cards {
+    display: flex;
+    gap: 15px;
+}
+
+.cards div {
+    background-color: #fff;
+    width: 220px; 
+    padding: 25px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Poppins;
+}
+
+.cards div:hover {
+    transform: scale(1.05);
+}
+
+.cards img:first-child {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 10px;
+}
+
+.cards h2 {
+    font-size: 25px;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    line-height: 1.2; 
+}
+
+.cards p {
+    font-family: Inter;
+    font-size: 15px;
+    color: var(--primary-color);
+    line-height: 1.5; 
+    margin-bottom: 15px;
+}
+
+.cards img:last-child {
+    bottom: 15px;
+    right: 15px;
+    width: 16px;
+    height: 16px;
+    color: #4caf50;
+}
+
+button{
+    background-color: var(--secondary-color);
+    color: var(--text-white);
+    border: none;
+    width: 10em;
+    border-radius: 10px;
+    padding: 1em;
+    margin-top: 2em;
+    font-size: 1em;
+}
+.cards-maiores{
+    display: flex;
+    margin: 5em;
+    justify-content: space-around;
+}
+.bigcards{
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 2em;
+    width: 25em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.calendario{
+    width: 90%;
+    padding-left: 1.5em;
+    margin-top: 1em;
+}
+.graphic{
+    width: 70%;
+    padding-left: 4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.cm{
+    display: flex;
+    justify-content: space-between;
+}
+.porc{
+    font-size: 30px;
+}
+.visitar-site{
+    background-color: var(--primary-color);
+    padding: 6em;
+    display: flex;
+    align-items: start;
+    margin-top: 15em;
+}
+.visitar-site p{
+    color: #ffffff;
+    margin-top: 3em;
+    padding-right: 4em;
+    margin-left: 4em;
+    font-size: 25px;
+
+}
+.logobranca{
+    margin-left: 5em;
+    width: 20%;
+}
+.sitevisit{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.sitevisit a{
+    background-color: var(--secondary-color);
+    color: var(--text-white);
+    border: none;
+    width: 10em;
+    border-radius: 30px;
+    padding: 1em;
+    margin-top: 2em;
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 6em;
+    font-family: Inter;
+    text-align: center;
+}
+.visit{
+    padding-top: 3em;
+}
+footer{
+    font-family: "Inter", sans-serif;
+}
+footer p{
+    text-align: center;
+    margin-top: 2em;
+    font-family: "Inter", sans-serif;
+    color: #989898;
+}

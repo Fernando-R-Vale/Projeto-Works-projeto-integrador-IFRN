@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Recuperação Sucesso
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/senha.css' %}">
+{% endblock %}
+{% block content %}
+<main>
+    <h1>Sua nova senha foi criada com sucesso!</h1>
+    <a href="{% url 'login' %}"><button>Entrar</button></a>
+</main>
+{% endblock %}

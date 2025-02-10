@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Gerenciamento de colaboradores{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/colaborador.css' %}">
+<style>
+    
+    div.b{
+            display: flex;
+            gap: 2em;
+        
+        }
+        div.b img{
+            width: 100px;
+            height: 100px;
+            margin-left: 2em;
+            margin-bottom: 1.5em;
+        }
+        div.menor img.trespontos{
+            width: 21px;
+            height: 26px;
+            padding-left: 24em;
+        }
+        div.b p{
+            font-family: "Poppins", sans-serif;
+            font-size: 20px;
+            margin: 10px;
+            margin-left: 17px;
+            color:#132F4D;
+        }
+        div.c{
+            margin: 14px 20px 0 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 2px;
+        }
+        p.profissao{
+            background-color: rgba(148, 193, 31, 0.29);
+            color: #94C11F;
+            max-width: 12em;
+            max-height: 50px;
+            padding: 5px 20px;
+            border-radius: 10px;
+            font-family: "Poppins", sans-serif;
+            font-size: 17px;
+            padding-top: 10px;
+        }
+        img.linha{
+            width: 26.8em;
+        }
+        p.data{
+            font-size: 20px;
+        }
+        #query{
+            width: 100em;
+        }
+        p.footer{
+            margin: 8em;
+            text-align: center;
+            font-family: "Inter", sans-serif;
+            color: #989898
+        }
+        .menu-opcoes {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        .menu-opcoes ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .menu-opcoes ul li {
+            padding: 5px 10px;
+        }
+        
+        .menu-opcoes ul li a {
+            text-decoration: none;
+            color: #132F4D;
+            font-family: "Poppins", sans-serif;
+        }
+        @media screen and (max-width: 1400px) and (min-width: 801px){
+            #query{
+            width: 80em;
+        }
+
+        /*  Tablet*/
+        @media screen and (max-width: 800px) and (min-width: 481px){
+            div.b img{
+            width: 70px;
+            height: 70px;
+        }
+            div.menor img.trespontos{
+                width: 18px;
+                height: 23px;
+                padding-left: 13.5em;
+            }
+            div.b{
+                margin: 0px 2px 8px 2px;
+            }
+            div.b p{
+                font-size: 14.5px;
+                margin: 2px;
+            }
+            div.c{
+                margin: 14px 20px 0 20px;
+                display: flex;
+                justify-content: space-between;
+            }
+            p.profissao{
+                width: 60px;
+                padding: 3px 10px;
+                border-radius: 7px;
+                font-size: 13px;
+            }
+            img.linha{
+                width: 26.8em;
+            }
+            p.data{
+                font-size: 15px;
+            }
+        }
+        @media screen and (max-width: 400px){
+            div.b img{
+                width: 53px;
+                height: 53px;
+                margin-right: 5px;
+            }
+            div.menor img.trespontos{
+                width: 15px;
+                height: 20px;
+                padding-left: 15.5em;
+            }
+            div.b{
+                margin: 0px 2px 8px 2px;
+            }
+            div.b p{
+                font-size: 13px;
+                margin: 5px;
+            }
+            div.c{
+                margin: 14px 20px 0 20px;
+            }
+            p.profissao{
+                width: 60px;
+                padding: 3px 10px;
+                border-radius: 7px;
+                font-size: 13px;
+            }
+            p.data{
+                font-size: 14px;
+            }
+
+        }
+    }
+</style>
+
+{% endblock %}    
+{% block header %}
+<figure>
+    <a href="{% url 'home' %}"><img class="seta" src="{% static 'img/setaazul.svg' %}" alt="Menu lateral" ></a>
+    <a href="{% url 'home' %}"><img class="logo" src="{% static 'img/simm.png' %}" alt="Logo da Simm Soluções" ></a>
+</figure>    
+<h1>Gerenciamento de colaboradores</h1>
+<div class="pesquisa" action="{% url 'home' %}">
+    <form method="get" action="{% url 'colaborador-manage' %}">
+        <input type="search" id="query" name="query" placeholder="Pesquisar..." value="{{ request.GET.query }}">
+    </form>
+    <a href="colaborador-create"><button>Adicionar Colaborador</button></a>
+</div>    
+{% endblock %}       
+{% block content %}
+<main>
+    {% for colaborador in colaboradores %}
+        <div class="menor">
+            <img class="trespontos" src="{% static 'img/trespontos.png' %}" alt="Três pontos" data-cpf="{{colaborador.cpf}}">
+            <div class="b">
+                <img src="{{colaborador.foto.url}}" alt="Foto do colaborador">
+                <div class="info">
+                    <p><b>{{colaborador.nome}}</b></p>
+                    <p>{{colaborador.cpf}}</p>
+                </div>    
+            </div>    
+            <hr>
+            <div class="c"> 
+                <p class="data">{{colaborador.dt_nascimento}}</p>
+                <p class="profissao">{{colaborador.profissao}}</p>
+            </div>    
+        </div>    
+    {% endfor %}    
+</main>      
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const tresPontos = document.querySelectorAll(".trespontos");
+
+        tresPontos.forEach(icon => {
+            icon.addEventListener("click", (event) => {
+                const colabCpf = event.target.dataset.cpf;  // Mude para 'cpf' e não 'id'
+                console.log("colabCpf: ", colabCpf);  // Verifique o valor de 'cpf'
+
+                // Remove qualquer menu existente
+                const existingMenu = document.querySelector(".menu-opcoes");
+                if (existingMenu) existingMenu.remove();
+
+                // Cria o menu de opções
+                const menu = document.createElement("div");
+                menu.className = "menu-opcoes";
+                menu.innerHTML = `
+                    <ul>
+                        <li><a href="colaborador-edit/${colabCpf}/">Editar</a></li>  <!-- Passa o cpf para a URL -->
+                        <li><a href="colaborador-delete/${colabCpf}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></li>
+                    </ul>
+                `;
+                
+                // Define a posição do menu
+                menu.style.position = "absolute";
+                menu.style.left = `${event.pageX}px`;
+                menu.style.top = `${event.pageY}px`;
+
+                document.body.appendChild(menu);
+
+                // Fecha o menu ao clicar fora
+                document.addEventListener("click", (e) => {
+                    if (!menu.contains(e.target) && e.target !== icon) {
+                        menu.remove();
+                    }
+                }, { once: true });
+            });
+        });
+    });
+</script>
+{% endblock %}
+{% block footer %}
+    <p class="footer">Criado e desenvolvido pela equipe X, todos os direitos autorais são <br> destinados a SIMM Soluções.</p> 
+{% endblock %}

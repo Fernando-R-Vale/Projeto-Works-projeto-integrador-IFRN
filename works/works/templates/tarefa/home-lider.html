@@ -1,0 +1,432 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Registro de Tarefas{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }        
+        figure img.sair{
+            width: 50px;
+            height: 50px;
+            
+        }
+        figure{
+            margin-top: 3em;
+        }
+        div.titulo{
+            display: flex;
+            justify-content: space-between;
+            margin: 50px;
+
+        }
+        div.pesquisa{
+            display: flex;
+            justify-content: space-around;
+        }
+        input{
+            border: solid #94C11F 2px;
+            border-radius: 15px;
+            width: 86%;
+            height: 50px;
+            padding-left: 10px;
+        }
+
+        input[type="text"]:focus {
+            border: 2px solid #94C11F !important; 
+            outline: none; 
+        }
+
+        h1{
+            margin-bottom: 10px;
+            margin-left: 0.65em;
+
+        }
+        div.titulo img{
+            width: 100%;
+            max-width: 33em;
+            margin-right: 15em;
+        }
+        div.intro{
+            margin: 0 0 0 3em;
+            margin-top: 6em;
+            margin-left: 6em;
+        }
+        p.titulo{
+            margin-left: 1.65em;
+        }
+
+        p{
+            padding: 10px 0;
+        }
+        p.status{
+            background-color: rgb(184 9 9 / 22%);
+            color: rgb(184 9 9 / 88%);
+            width: 59px;
+            padding: 5px 20px;
+            border-radius: 10px;
+            margin: 15px 0 15px 0;
+        }
+        div.menor div.tarefa img.trespontos{
+            width: 21px;
+            height: 26px;
+        }
+        p.descricao{
+            color: #B3B3B3;
+        }
+        div.c{
+            margin: 14px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        div.calendario{
+            display: flex;
+            justify-content: left;
+        }
+        div.calendario img.calen{
+            width: 20px;
+            height: 20px;
+            padding: 10px 10px 0 0;
+        }
+        button{
+            background-color: #94C11F;
+            border-radius: 10px;
+            color: white;
+            border: none;
+            width: 120px;
+            height: 50px;
+            cursor: pointer;
+        }
+        h1{
+            color: rgb(13, 13, 13);
+        }
+        p.footer{
+            text-align: center;
+            margin-top: 2em;
+            font-family: "Inter", sans-serif;
+            color: #989898;
+        }
+
+        footer{
+            
+            margin: 8em 0 8em 0;
+            text-align: center;
+         }
+        /* Menu suspenso */
+        
+        
+        
+        .dropdown {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            min-width: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+            border: 1px solid #eee;
+        }
+
+
+        .dropdown-content a {
+            font-family: "Inter", sans-serif;
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .dropdown-content a:hover{
+            background-color: #94C11F;
+        }
+        footer p{
+            text-align: center;
+            margin-top: 2em;
+            font-family: "Inter", sans-serif;
+            color: #989898;
+        }
+
+
+        /* Esconder menu em mobile */
+        @media (max-width: 768px) {
+            .dropdown-content {
+                right: -20px;
+            }
+        }
+
+        /*  Tablet*/
+        @media screen and (max-width: 800px) and (min-width: 481px){
+            figure img.sair{
+            width: 38px;
+            height: 38px;
+            }
+            div.titulo{
+                margin: 50px;
+
+            }
+            div.titulo img{
+                width: 70%;
+                max-width: 30em;
+                margin-right: 2em;
+            }
+            input{
+                width: 86%;
+                height: 45px;
+                margin-left: 3em;
+            }
+            div.intro{
+                margin:0;
+            }
+            p.titulo{
+                margin-left: 1.2em;
+            }
+            p.status{
+                width: 42px;
+                padding: 5px 15px;
+                border-radius: 7px;
+                font-size: 13px;
+                margin: 5px 5px 10px 0;
+            }
+            h2{
+                font-size: 18px;
+            }
+            p.lider{
+                font-size: 15px;
+            }
+            div.menor div.tarefa img.trespontos{
+                width: 18px;
+                height: 23px;
+            }
+            p.descricao{
+                font-size: 11px;
+            }
+            div.c{
+                margin: 14px 0 0 0;
+            }
+            p.data{
+                font-size: 15px;
+            }
+            button{
+                border: none;
+                margin-top: 4px;
+                height: 32px;
+                width: 85px;
+                border-radius: 7px;
+                font-size: 13px;
+            }
+        }
+        /*Mobile*/
+        @media (max-width: 768px) {
+            figure img.sair{
+            width: 28px;
+            height: 28px;
+            }
+            div.titulo{
+                margin: 10px;
+
+            }
+            h1{
+                font-size: 20px;
+                margin-left: 0;
+                margin-bottom: 0;
+            }
+            div.titulo{
+                display: block;
+            }
+            div.titulo img{
+                width: 87%;
+            }
+            input{
+                width: 86%;
+                height: 38px;
+                margin-left: 1em;
+            }
+            div.intro{
+                margin: 0;
+                width: 50%;
+                
+            }
+            p.titulo{
+                margin-left: 0;
+                font-size: 11px;
+            }
+            p.status{
+                color: rgb(184, 9, 9);;
+                width: 32px;
+                padding: 5px 12px;
+                font-size: 10px;
+                margin: 5px 5px 8px 0;
+            }
+            h2{
+                font-size: 15px;
+            }
+            p.lider{
+                font-size: 12px;
+            }
+            div.menor div.tarefa img.trespontos{
+                width: 15px;
+                height: 20px;
+            }
+            p.descricao{
+                font-size: 10px;
+            }
+            div.c{
+                margin: 14px 0 0 0;
+            }
+            p.data{
+                font-size: 14px;
+            }
+            button{
+                margin-top: 4px;
+                height: 27px;
+                width: 80px;
+                border-radius: 7px;
+                font-size: 11px;
+            }
+            .boasvindas {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                box-shadow: 0 6px 9px rgba(0, 0, 0, 0.1); 
+            }
+            .titulo img {
+                content: url("{% static 'img/imgdois.svg' %}"); 
+                width: 80%;
+                margin: auto 0;
+            }
+
+        }
+        
+
+
+        
+    </style>
+{% endblock %}
+{% block content %}
+<body>
+    <header>
+        <figure>
+            <a href="{% url 'logout' %}">
+                <img src="{% static 'img/sair.svg' %}" alt="Sair" class="sair">
+            </a>
+            <img class="logo" src="{% static 'img/simm.png' %}" alt="Logo da Simm Soluções">
+        </figure>
+        <div class="titulo">
+            <div class="intro">
+                <h1>Olá, <br><span style="color: #183d64;">{{ user_name }}</span></h1>
+                <p class="titulo">Registre suas tarefas aqui.</p>
+            </div>
+            <img src="{% static 'img/trabalhador.png' %}" alt="Trabalhador">
+        </div>
+    </header>
+    <div class="filtros-container" style="margin: 20px; padding: 15px; border-radius: 10px;">
+        <div class="filtros-container" style="margin: 20px 50px; padding: 20px; border-radius: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <form method="GET" action="." style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                
+                <img class="l" src="{% static 'img/lupa.svg' %}" alt="Lupa" style="width: 20px; transform: translateY(-50%); width: 20px; opacity: 0.5; margin-top: 1.5em;">
+                <input type="text" name="search" placeholder="Pesquisar tarefas..." 
+                       value="{{ current_search }}" 
+                       style="flex: 1; border: 2px solid #94C11F; border-radius: 10px; min-width: 300px;"> 
+        
+                <select name="status" style="padding: 12px; border: 2px solid #94C11F; border-radius: 10px; width: 200px;">
+                    <option value="">Todos os status</option>
+                    <option value="Pendente" {% if current_status == 'Pendente' %}selected{% endif %}>Pendente</option>
+                    <option value="Em andamento" {% if current_status == 'Em andamento' %}selected{% endif %}>Em andamento</option>
+                    <option value="Concluído" {% if current_status == 'Concluído' %}selected{% endif %}>Concluído</option>
+                </select>
+        
+                <select name="cadastro" style="padding: 12px; border: 2px solid #94C11F; border-radius: 10px; width: 220px;">
+                    <option value="">Todos os cadastros</option>
+                    <option value="true" {% if current_cadastro == 'true' %}selected{% endif %}>Cadastros realizados</option>
+                    <option value="false" {% if current_cadastro == 'false' %}selected{% endif %}>Cadastros pendentes</option>
+                </select>
+        
+                <select name="sort" style="padding: 12px; border: 2px solid #94C11F; border-radius: 10px; width: 200px;">
+                    <option value="dh_inicio" {% if current_sort == 'dh_inicio' %}selected{% endif %}>Ordenar por data</option>
+                    <option value="nome" {% if current_sort == 'nome' %}selected{% endif %}>Ordenar por nome</option>
+                    <option value="-dh_inicio" {% if current_sort == '-dh_inicio' %}selected{% endif %}>Mais recentes primeiro</option>
+                </select>
+        
+                <button type="submit" style="margin:0; background: #94C11F; color: white; border: none; border-radius: 10px; height: 45px; font-size: 15px; cursor: pointer;">
+                    Aplicar
+                </button>
+                <a href="." style="padding: 12px 25px; background: #e0e0e0; color: #333; text-decoration: none; border-radius: 10px;">
+                    Limpar
+                </a>
+            </form>
+        </div>
+    </div>
+    <main>
+        {% for tarefa in tarefas %}
+            <div class="menor">
+                <div class="tarefa" data-cadastro-realizado="{{ tarefa.cadastro_realizado }}">
+                    <p class="status">{{ tarefa.status }}</p>
+                    <div class="dropdown">
+                        <img class="trespontos" src="{% static 'img/trespontos.png' %}" 
+                             alt="Mais opções" data-tarefa-id="{{ tarefa.id }}">
+                        <div class="dropdown-content">
+                            {% if tarefa.cadastro_realizado %}
+                                <a href="{% url 'visualizar-tarefa' id=tarefa.id %}">Visualizar</a>
+                                <a href="{% url 'editar-tarefa' id=tarefa.id %}">Editar</a>
+                            {% else %}
+                                <p style="margin-left: 1em; color: red;">Erro: realize o registro</p>
+                            {% endif %}
+                           
+                        </div>
+                    </div>
+                </div>
+                <h2>{{ tarefa.nome }}</h2>
+                <p class="lider"><b>Líder responsável: {{ tarefa.lider_email.nome }}</b></p>
+                <p class="descricao">{{ tarefa.descricao }}</p>
+                <hr>
+                <div class="c">
+                    <div class="calendario">
+                        <img class="calen" src="{% static 'img/calendario.png' %}" alt="Calendário">
+                        <p class="data">{{ tarefa.dh_inicio|date:"d/m/Y" }}</p>
+                    </div>
+                    {% if not tarefa.cadastro_realizado %}
+                        <a href="{% url 'registro-tarefas' id=tarefa.id %}"><button>Registrar</button></a>
+                    {% else %}
+                        <p>Cadastro realizado.</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <p>Nenhuma tarefa encontrada.</p>
+        {% endfor %}
+    </main>
+
+    <footer>
+        <p>Criado e desenvolvido pela equipe X, todos os direitos autorais são <br> destinados a SIMM Soluções.</p>
+    </footer>
+</body>
+<script>
+
+    document.addEventListener('click', (e) => {
+        // Fechar menus ao clicar fora
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-content').forEach(menu => {
+                menu.style.display = 'none';
+            });
+        }
+    });
+    
+    document.querySelectorAll('.trespontos').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const menu = btn.nextElementSibling;
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+{% endblock %}
