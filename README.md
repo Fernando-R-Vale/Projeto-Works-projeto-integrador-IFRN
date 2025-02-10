@@ -6,3 +6,4 @@ Sob a orientação de @salesfilho, desenvolvemos o projeto "Works" como uma form
 Usamos Django, python, sqlite, Html, CSS e Javascript
 ## Aprendizados:
 A experiência foi enriquecedora, o aprendizado da aplicação e do trabalho em equipe, foi uma forma de desenvolver habilidades comunicativas e na área da tecnologia
+(Clonagem de documentos do repositório "https://github.com/PI-InfoWeb-CNAT/2024-gestao-servicos-works")
